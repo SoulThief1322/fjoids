@@ -1,0 +1,27 @@
+using System.Text;
+string text = Console.ReadLine();
+var stringBuild = new StringBuilder();
+int strength = 0;
+foreach(var ch in text)
+{
+    if (Char.IsDigit(ch))
+    {
+        strength += int.Parse(ch.ToString());
+    }
+    if(ch == '>')
+    {
+        stringBuild.Append(ch);
+    }
+    else
+    {
+        if (strength == 0)
+        {
+            stringBuild.Append(ch);
+        }
+        else
+        {
+            strength--;
+        }
+    }
+}
+Console.WriteLine(stringBuild);
