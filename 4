@@ -1,0 +1,38 @@
+using System.Collections.Generic;
+using System;
+using System.Text;
+
+string input = Console.ReadLine();
+int multiplier = int.Parse(Console.ReadLine());
+var result = new Stack<string>();
+int add = 0;
+int number = 0;
+for (int i = input.Length - 1; i >= 0; i--)
+{
+    string multiplied = (int.Parse(input[i].ToString()) * multiplier + add).ToString();
+    if (multiplied.Length == 1)
+    {
+        number = int.Parse(multiplied[0].ToString());
+        add = 0;
+    }
+    else
+    {
+        number = int.Parse(multiplied[1].ToString());
+        add = int.Parse(multiplied[0].ToString());
+    }
+    result.Push(number.ToString());
+}
+if (add != 0)
+{
+    result.Push(add.ToString());
+}
+string s = String.Join("",result);
+s = s.TrimStart('0');
+if (s == string.Empty)
+{
+    Console.WriteLine("0");
+}
+else
+{
+    Console.WriteLine(s);
+}
